@@ -1,0 +1,7 @@
+<input [formControl]="control">
+<ng-container *ngIf="control.dirty && control.touched && control.errors">
+    <div *ngIf="control.errors['required']">Name is required</div>
+    <div *ngIf="control.errors['minlength']">Name must be at least 
+        {{ control.errors['minlength'].requiredLength }} char long and is currently 
+        {{ control.errors['minlength'].actualLength }} char long</div>
+</ng-container>
