@@ -29,4 +29,7 @@ export class CardFormComponent {
   onSubmit() {
     console.log('submited');
   }
+  onResetClick() {
+    this.cardForm.reset()
+  }
 }
