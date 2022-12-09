@@ -1,16 +1,28 @@
 <div class="field">
   <label class="label">{{ label }}</label>
   <div class="control">
-    <input class="input" [formControl]="control" [ngClass]="{'is-danger': showErrors()}" >
+    <input
+      class="input"
+      [formControl]="control"
+      [ngClass]="{ 'is-danger': showErrors() }"
+    />
   </div>
   <ng-container *ngIf="control.dirty && control.touched && control.errors">
-    <div class="help is-danger" *ngIf="control.errors['required']">Name is required</div>
-    <div class="help is-danger" *ngIf="control.errors['minlength']">Name must be at least 
-        {{ control.errors['minlength'].requiredLength }} char long and is currently 
-        {{ control.errors['minlength'].actualLength }} char long</div>
-    <div class="help is-danger" *ngIf="control.errors['maxlength']">Name must be shorter than 
-        {{ control.errors['maxlength'].requiredLength }} char long and is currently 
-        {{ control.errors['maxlength'].actualLength }} char long</div>
-    <div class="help is-danger" *ngIf="control.errors['pattern']">Invalid value, please try again</div>
-</ng-container>
+    <div class="help is-danger" *ngIf="control.errors['required']">
+      Name is required
+    </div>
+    <div class="help is-danger" *ngIf="control.errors['minlength']">
+      Name must be at least
+      {{ control.errors["minlength"].requiredLength }} char long and is
+      currently {{ control.errors["minlength"].actualLength }} char long
+    </div>
+    <div class="help is-danger" *ngIf="control.errors['maxlength']">
+      Name must be shorter than
+      {{ control.errors["maxlength"].requiredLength }} char long and is
+      currently {{ control.errors["maxlength"].actualLength }} char long
+    </div>
+    <div class="help is-danger" *ngIf="control.errors['pattern']">
+      Invalid value, please try again
+    </div>
+  </ng-container>
 </div>

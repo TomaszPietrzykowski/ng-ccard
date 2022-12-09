@@ -1,14 +1,31 @@
-<form [formGroup]="cardForm">
-  <app-input [control]="$any(cardForm).controls['name']" label="Name"></app-input>
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+  <app-input
+    [control]="$any(cardForm).controls['name']"
+    label="Name"
+  ></app-input>
+  <app-input
+    [control]="$any(cardForm).controls['cardNumber']"
+    label="Card Number"
+  ></app-input>
+  <app-input
+    [control]="$any(cardForm).controls['expiration']"
+    label="Expiration"
+  ></app-input>
+  <app-input
+    [control]="$any(cardForm).controls['securityCode']"
+    label="Security Code"
+  ></app-input>
+  <button type="submit" class="button is-primary" [disabled]="cardForm.invalid">
+    Submit
+  </button>
 </form>
 
-
 <!-- Debugging tool: -->
-<br/>
-<br/>
-<br/>
-<br/>
-<hr/>
+<br />
+<br />
+<br />
+<br />
+<hr />
 <h3>Debugging output:</h3>
 <div>Form contents: {{ cardForm.value | json }}</div>
 <div>Form is valid: {{ cardForm.valid }}</div>
