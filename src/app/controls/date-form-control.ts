@@ -20,6 +20,35 @@ export class DateFormControl extends FormControl {
       super.setValue(value, { ...options, emitModelToViewChange: true });
       return;
     }
+    // after deleting "/" and entering number, add "/"  automatically
+    if (value.length === 3 && value[2] !== '/' && this.value.length === 2) {
+      super.setValue(this.value + '/' + value[2], {
+        ...options,
+        emitModelToViewChange: true,
+      });
+      return;
+    }
+    // disable entering "/" if no month number entered or "0" only
+    if (
+      this.value.length === 0 ||
+      (this.value.length === 1 && this.value[0] === '0')
+    ) {
+      if (value[value.length - 1] === '/') {
+        super.setValue(this.value, {
+          ...options,
+          emitModelToViewChange: true,
+        });
+        return;
+      }
+    }
+    // when "/" entered after single digit add "0" at the front
+    if (value.length === 2 && value[1] === '/' && this.value.length === 1) {
+      super.setValue('0' + value, {
+        ...options,
+        emitModelToViewChange: true,
+      });
+      return;
+    }
     if (value.length === 2) {
       super.setValue(value + '/', { ...options, emitModelToViewChange: true });
       return;
